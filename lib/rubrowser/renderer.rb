@@ -26,6 +26,7 @@ module Rubrowser
       @layout = options[:layout]
       @server = options[:server]
       @files = options[:files]
+      @groups = options[:groups]
       @toolbox = options[:toolbox]
     end
 
@@ -36,6 +37,11 @@ module Rubrowser
     def layout
       return 'null' unless @layout
       File.read(@layout)
+    end
+
+    def groups
+      return 'null' unless @groups
+      File.read(@groups)
     end
 
     def toolbox?

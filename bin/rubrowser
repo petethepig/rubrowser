@@ -27,6 +27,12 @@ OptionParser.new do |opts|
   ) { |layout| options[:layout] = layout }
 
   opts.on(
+    '-gFILE',
+    '--groups=FILE',
+    'groups to apply on the resulting graph'
+  ) { |groups| options[:groups] = groups }
+
+  opts.on(
     '-sSERVER:PORT',
     '--server=SERVER:PORT',
     'rubrowser server for execution monitoring'

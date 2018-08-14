@@ -2,6 +2,30 @@ var classForCircular = function(d) {
   return d.circular ? 'circular' : '';
 };
 
+var groups = groups || {};
+var replacements = {};
+
+data.definitions.forEach(function(d){
+  for (g in groups) {
+    var v = groups[g];
+    if (d.file.indexOf(g) > -1) {
+      replacements[d.namespace] = v
+      d.namespace = v
+    }
+  }
+})
+
+data.relations.forEach(function(d){
+  for (g in groups) {
+    var v = groups[g];
+    if (d.file.indexOf(g) > -1) {
+      d.caller = replacements[d.caller] || d.caller;
+      d.namespace = replacements[d.namespace] || d.namespace;
+      d.resolved_namespace = replacements[d.resolved_namespace] || d.resolved_namespace;
+    }
+  }
+})
+
 var svg = d3.select(".dependency_graph svg"),
     $svg = $('.dependency_graph svg'),
     width = $svg.width(),
