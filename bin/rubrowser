@@ -8,6 +8,7 @@ require 'rubrowser/renderer'
 options = {
   toolbox: true,
   layout: nil,
+  config: nil,
   output: STDOUT
 }
 
@@ -27,10 +28,10 @@ OptionParser.new do |opts|
   ) { |layout| options[:layout] = layout }
 
   opts.on(
-    '-gFILE',
-    '--groups=FILE',
-    'groups to apply on the resulting graph'
-  ) { |groups| options[:groups] = groups }
+    '-cFILE',
+    '--config=FILE',
+    'config file'
+  ) { |config| options[:config] = config }
 
   opts.on(
     '-sSERVER:PORT',

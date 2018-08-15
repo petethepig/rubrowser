@@ -3,11 +3,11 @@
     <div class="card-header">Search</div>
     <div class="card-body">
       <label class="form-label">Namespace</label>
-      <textarea id="highlight_by_namespace" class="form-control" rows="5"></textarea>
+      <textarea id="highlight_by_namespace" class="form-control" rows="5"><%= toolbox_config("highlight_by_namespace") %></textarea>
     </div>
     <div class="card-body">
       <label class="form-label">File Path</label>
-      <textarea id="highlight_by_file_path" class="form-control" rows="5"></textarea>
+      <textarea id="highlight_by_file_path" class="form-control" rows="5"><%= toolbox_config("highlight_by_file_path") %></textarea>
     </div>
     <div class="card-body">
       <div class="form-check">
@@ -24,11 +24,11 @@
     <div class="card-header">Ignore</div>
     <div class="card-body">
       <label>Namespace</label>
-      <textarea id="ignore_by_namespace" class="form-control" rows="5"></textarea>
+      <textarea id="ignore_by_namespace" class="form-control" rows="5"><%= toolbox_config("ignore_by_namespace") %></textarea>
     </div>
     <div class="card-body">
       <label>File Path</label>
-      <textarea id="ignore_by_file_path" class="form-control" rows="5"></textarea>
+      <textarea id="ignore_by_file_path" class="form-control" rows="5"><%= toolbox_config("ignore_by_file_path") %></textarea>
     </div>
     <div class="card-body">
       <div class="form-check">

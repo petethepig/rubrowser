@@ -1,4 +1,5 @@
 require 'erb'
+require 'yaml'
 require 'rubrowser/data'
 require 'rubrowser/formatter/json'
 
@@ -19,15 +20,15 @@ module Rubrowser
 
     include ERB::Util
 
-    attr_reader :files, :output, :server
+    attr_reader :files, :output, :server, :config
 
     def initialize(options)
       @output = output_file(options[:output])
       @layout = options[:layout]
       @server = options[:server]
       @files = options[:files]
-      @groups = options[:groups]
       @toolbox = options[:toolbox]
+      @config = options[:config] ? YAML.load_file(options[:config]) : {}
     end
 
     def output_file(path)
@@ -35,13 +36,21 @@ module Rubrowser
     end
 
     def layout
-      return 'null' unless @layout
-      File.read(@layout)
+      return 'null' unless @config['layout'] || @layout
+      if @config['layout']
+        @config['layout'].to_json
+      else
+        File.read(@layout)
+      end
     end
 
     def groups
-      return 'null' unless @groups
-      File.read(@groups)
+      return 'null' unless @config['groups']
+      @config['groups'].to_json
+    end
+
+    def toolbox_config(arg)
+      ((@config['toolbox_config'] || {})[arg] || '').gsub(/\s+/, "\n")
     end
 
     def toolbox?
