@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'puma'
   s.add_runtime_dependency 'litecable'
   s.add_runtime_dependency 'websocket'
-  s.add_runtime_dependency 'yaml'
 
   s.add_development_dependency 'bundler', '~> 1.14'
   s.add_development_dependency 'rake', '~> 10.0'
